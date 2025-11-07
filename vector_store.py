@@ -1,15 +1,13 @@
 
 from pdf_utils import pdf_to_docs
-from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_text_splitters import CharacterTextSplitter
-
+from langchain_huggingface import HuggingFaceEmbeddings
 # ...existing code...
 
 
 def build_faiss(path, index_path="faiss_index"):
     docs = pdf_to_docs(path)
-    print("hello I am divyansh Patidaer ",path)
     text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     texts, metadatas = [], []
 
@@ -29,3 +27,5 @@ def build_faiss(path, index_path="faiss_index"):
 def load_faiss(index_path="faiss_index"):
     emb = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     return FAISS.load_local(index_path, embeddings=emb, allow_dangerous_deserialization=True)
+
+
