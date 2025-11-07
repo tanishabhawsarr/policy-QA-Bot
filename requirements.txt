@@ -3,9 +3,10 @@ pypdf
 langchain
 langchain-community
 langchain-groq
+langchain-huggingface
 sentence-transformers
 faiss-cpu
-langchain-hugginface
 tiktoken
 huggingface-hub
 langchain-core
+torch  
